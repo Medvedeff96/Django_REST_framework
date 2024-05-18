@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'orm_shop',
     'main',
 ]
 
@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'orm_shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dj_orm',
-        'USER': 'adilet',
-        'PASSWORD': '1',
+        'NAME': 'car',
+        'USER': 'postgres',
+        'PASSWORD': 'Qwerty12',
         'HOST': 'localhost',
         'PORT': 5432
     }

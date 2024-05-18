@@ -46,8 +46,31 @@ DRIVE_UNIT_CHOICES = (
 
 
 class Car(models.Model):
-    pass  # реализуйте модель
+    id = models.IntegerField(primary_key=True)
+    model = models.CharField(max_length=50)
+    year = models.IntegerField()
+    color = models.CharField(max_length=50)
+    mileage = models.CharField(max_length=50)
+    volume = models.CharField(max_length=50)
+    body_type = models.CharField(max_length=9, choices=BODY_TYPE_CHOICES, null=True, blank=True)
+    drive_unit = models.CharField(max_length=5, choices=DRIVE_UNIT_CHOICES, null=True, blank=True)
+    gearbox = models.CharField(max_length=9, choices=GEARBOX_CHOICES, null=True, blank=True)
+    fuel_type = models.CharField(max_length=8, choices=FUEL_TYPE_CHOICES, null=True, blank=True)
+    price = models.IntegerField()
+    image = models.ImageField()
+    pass
+
+    def __str__(self):
+        return f'{self.model} {self.year} {self.price}'
+
 
 
 class Sale(models.Model):
+    id = models.IntegerField(primary_key=True)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
     pass  # реализуйте модель
+
+    def __str__(self):
+        return f'{self.client} {self.car.model} {self.created_at}'
